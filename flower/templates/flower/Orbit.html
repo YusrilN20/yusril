@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+{%load static%}
+<html>
+<head>
+  <title>W.E.P Detector</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="{%static 'orbit.css'%}"> -->
+  <style>
+
+.body {
+  position: fixed;
+  margin: 0px;
+  width: 100%;
+}
+html{
+  scroll-behavior: smooth;
+}
+/* Navigation bar */
+*{
+  margin:0px;
+  padding:0px;
+  font-family:verdana;
+}
+#abc{
+  width:100%;
+  height:100vh;
+  background-image: url(img2.jpg);
+  background-size: cover;
+}
+nav{
+  width: 100%;
+  height: 50px;
+  background-color: #0005;
+  line-height: 50px;
+}
+nav ul{
+  float: right;
+  margin-right: 30px;
+}
+nav ul li{
+  list-style-type: none;
+  display: inline-block;
+  transition: 0.7s all;
+}
+nav ul li:hover{
+  background-color:#088;
+}
+nav ul li a{
+  text-decoration: none;
+  color: #fff;
+  padding: 30px;
+}
+
+/* Header */
+.topleft {
+  position: absolute;
+  top: 200px;
+  left: 16px;
+}
+
+.parallax h1 {
+  font-size: 50px;
+  font-weight: 500;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #FFFFFF;
+  text-align: left justify;
+  padding-bottom: 5px;
+}
+
+.parallax p{
+  font-size: 30px;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: left justify;
+  color: white;
+}
+
+/* start scanning button */
+.btn {
+  cursor: pointer;
+  border: 2px solid white;
+  background-color: transparent;
+  height: 50px;
+  width: 200px;
+  color: white;
+  font-weight: 300;
+  font-size: 1.5em;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+}
+
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover span {
+  padding-right: 25px;
+}
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* About */
+#myDIV {
+  height:300px;
+  display: grid;
+  gap: 10px;
+  width:65%;
+  padding: 10px;
+  grid-auto-columns: 50%;
+background-color:#D5CAB6;
+float:left;
+
+}
+
+#kanan {
+  height:300px;
+  width:35%;
+  grid-auto-columns: 50%;
+  background-color:#212F1D;
+  float:right;
+  overflow:hidden;
+}
+
+#myDIV div {
+  text-align: center;
+  padding: 20px 0;
+}
+.about { grid-area: 1 / 1 / 2 / 2; 
+
+}
+.auto-slideshow{ grid-area: 1 / 2 / 3 / 3;}
+
+.section1 {
+  background: url(/static/bg.jpeg);
+  background-repeat: no-repeat;
+  background-size:cover;
+  margin-bottom: 0px;
+  height: 30vw;
+  width: fit-content;
+}
+.about h2{
+  font-family: Garamond, serif;
+  font-stretch: ultra-expanded;
+  text-align: center;
+  color: #212f1d;
+  font-size: x-large;
+  font-weight: 700;
+  right: 0;
+}
+.about p{
+    text-align: center;
+    color: #white;
+    font-weight: 525;
+}
+
+/* slideshow */
+.mySlides {
+  display:none; 
+  max-height: 15vw ; 
+ margin:0 auto;
+ margin-bottom:10px;
+  padding-top: 2vw ;
+}
+
+/* Section 2 background */
+.section2 {
+  background: #D5CAB6;
+  margin-top: 0px;
+  padding-top: 10px;
+  height: 0 auto;
+}
+
+/* see result button */
+.btn1 {
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: #212F1D;
+  height: 50px;
+  width: 250px;
+  color: white;
+  font-weight: 300;
+  font-size: 1em;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.6);
+  margin-left: 40%;
+  margin-right: 50%;
+}
+
+.btn1 span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.btn1 span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn1:hover span {
+  padding-right: 25px;
+}
+
+.btn1:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* Section 3 */
+.section3 {
+  background: #212F1D;
+  margin-top: 0px;
+  height: 850px;
+}
+/* Grid */
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  padding: 10px;
+}
+
+.grid-item {
+  /* border: 1px solid rgba(0, 0, 0, 0.8); */
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  color: #D5CAB6;
+}
+
+.img-container {
+  position: relative;
+  font-family: Arial;
+}
+
+.img-container img {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+}
+
+/* image as button */
+.img-container button{
+  border-radius: 50%;
+  border-color: #D5CAB6;
+  padding: 8px 8px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  box-shadow: 0 6px #999;
+}
+
+.img-container button:hover {background-color: #3e8e41}
+
+.img-container button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+/* result section title */
+.result h3 {
+  font-family: Garamond, serif;
+  font-stretch: ultra-expanded;
+  text-align: center;
+  color: #D5CAB6;
+  font-size: x-large;
+  font-weight: 700;
+  padding-top: 10px;
+  
+}
+
+/* Meet the team section */
+html {
+  box-sizing: border-box;
+}
+.card img {
+  border-radius: 50%;
+  border: 2px solid #000;
+}
+.column {
+  float: left;
+  width: 20%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+  display: table;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 #eaf8f0;
+  background-color: white;
+  height: 30vw;
+}
+
+.container {
+  padding: 0 16px;
+  display: table-cell;
+}
+
+.container h2{
+  font-size: large;
+  color: #555;
+  font-weight: 600;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: #555;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100px;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+/* Scan section */
+.scan-section h3{
+  font-family: Garamond, serif;
+  font-stretch: ultra-expanded;
+  text-align: center;
+  color: black;
+  font-size: x-large;
+  font-weight: 700;
+}
+
+.scan-section p{
+  text-align: center;
+  color: #DCDCDC;
+}
+
+/* parallax */
+.parallax {
+  /* The image used */
+  background-image: url("https://wpcdn.us-midwest-1.vip.tn-cloud.net/www.charlottemagazine.com/content/uploads/data-import/46051717/02.05.15.heirloom.edibleflowers.clthg.0022.jpg");
+
+  /* Set a specific height */
+  min-height: 300px; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax1 {
+  /* The image used */
+  background-image: url("https://wallpapercave.com/wp/wp3157743.jpg");
+
+  /* Set a specific height */
+  min-height: 220px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax2 {
+  /* The image used */
+  background-image: url("https://media.architecturaldigest.com/photos/616dd3e9b94938ca646d1d7c/16:9/w_2560%2Cc_limit/img050%2520copy.jpg");
+
+  /* Set a specific height */
+  min-height: 46.8vw; 
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  margin-top: 0px;
+}
+.team-header h2{
+  text-align: center;
+  font-family: Garamond, serif;
+  font-stretch: ultra-expanded;
+  text-align: center;
+  text-decoration: overline underline;
+  text-decoration-style: double;
+  text-decoration-thickness: 2px;
+  color: white;
+  font-size: xx-large;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  font-weight: 300;
+}
+
+/* contact overlay */
+#overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlay1 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlay2 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlay3 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlay4 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 50px;
+  color: white;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+/* result overlay */
+#overlayimg1 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg2 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg3 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg4 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg5 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg6 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg7 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg8 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg9 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg10 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg11 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg12 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg13 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg14 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+#overlayimg15 {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
+#text1{
+  position: absolute;
+  text-align: justify;
+  top: 50%;
+  left: 50%;
+  font-size: 17px;
+  color: #212f1d;
+  background-color: #D5CAB6;
+  transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  font-family: 'Times New Roman', Times, serif;
+}
+/* PAGE CONTENT */
+.content {padding:20px;}
+
+.imageClipLayar{
+  width:420px;
+  height:420px;
+}
+  </style>
+  <link rel="icon" type="image/x-icon" href="Logo.png">
+  <!-- <link rel="stylesheet" href="/static/orbit.css"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- meettheteam overlay -->
+<div id="overlay" onclick="off()">
+  <div id="text">Universitas Pendidikan Indonesia<br>yusrilnurhikam20@gmail.com<br>083822705145 </div>
+</div>
+
+<div id="overlay1" onclick="off1()">
+  <div id="text">Universitas Pendidikan Indonesia<br>gialang2121@gmail.com<br>0895340528764</div>
+</div>
+
+<div id="overlay2" onclick="off2()">
+  <div id="text">Universitas Negeri Jakarta <br> dindasalsabilaspa@gmail.com <br> 081291518506</div>
+</div>
+
+<div id="overlay3" onclick="off3()">
+  <div id="text">Universitas Pendidikan Indonesia<br>fatihulihsan16@gmail.com<br>081381217372</div>
+</div>
+
+<div id="overlay4" onclick="off4()">
+  <div id="text">Universitas Negeri Jakarta<br>daffaajip@gmail.com<br>081284859780</div>
+</div>
+
+<!-- image overlay -->
+<div id="overlayimg1" onclick="offf1()">
+  <div id="text1">
+    <center>Allium</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Umbi/akar<br>
+    <center>Manfaat:</center><br>
+    sebagai obat tekanan darah tinggi, 
+    meredakan rasa pening di kepala, 
+    menurunkan kolesterol,dan obat maag<br>
+    <center>Efek Samping:</center><br>
+    Bau mulut, infeksi jamur, hipotensi, 
+    gangguan lambung (saat dikonsumsi berlebihan)<br>
+    <center>Deskripsi:</center><br>
+    Allium adalah genus bawang yang meliputi bermacam-macam 
+    tumbuhan bunga monokotil dan di dalamnya termasuk bawang 
+    merah, bawang putih, bawang kucai, bawang daun, bawang
+  </div>
+</div>
+
+<div id="overlayimg2" onclick="offf2()">
+  <div id="text1">
+    <center>Borage</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun, Bunga, dan Biji<br>
+    <center>Manfaat:</center><br>
+    Minyak biji borage memiliki manfaat untuk eksim, 
+    ruam merah, gatal kulit kepala, dan masalah kulit lainnya. 
+    Selain itu, minyak biji borage juga kadang ditambahkan 
+    ke dalam susu formula<br>
+    <center>Efek Samping:</center><br>
+    Daun, bunga, dan biji borage dapat mengandung alkaloid 
+    pirolizidin yang dapat merusak hati atau menyebabkan 
+    kanker, terutama bila digunakan pada dosis tinggi dalam 
+    jangka waktu yang lama.<br>
+    <center>Deskripsi:</center><br>
+    Borage adalah tanaman tahunan yang berasal dari wilayah 
+    Mediterania. Tanaman ini tingginya, yaitu sekitar 0,6 m. 
+    Borage memiliki batang, dan daun yang tertutup oleh 
+    rambut-rambut kasar berduri. Sementara, bunga dari borage 
+    berwarna biru cerah, dan berbentuk bintang.
+  </div>
+</div>
+
+<div id="overlayimg3" onclick="offf3()">
+  <div id="text1">
+    <center>Burdock</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Umbi/akar<br>
+    <center>Manfaat:</center><br>
+    Dapat digunakan sebagai pembersih darah--
+    untuk menghapus aliran darah dari racun, 
+    sebagai diuretik (membantu membersihkan tubuh dari 
+    kelebihan air dengan meningkatkan urin output), dan 
+    sebagai obat oles untuk masalah kulit seperti eksim, 
+    jerawat, dan psoriasis.<br>
+    <center>Efek Samping:</center><br>
+    Burdock dapat menyebabkan reaksi alergi 
+    (dermatitis kontak alergi) pada orang yang sensitif 
+    terhadap bunga dan herbal tertentu. Selain itu, wanita 
+    yang sedang hamil harus menghindari burdock karena dapat 
+    menurunkan gula darah.<br>
+    <center>Deskripsi:</center><br>
+    Merupakan tanaman herbal, dengan tinggin sekitar satu meter. 
+    Memiliki nutrisi dan khasiat obat. Mereka biasanya tumbuh 
+    secara alami di daerah gurun dan membutuhkan banyak nitrogen.
+    Daunnya berwarna hijau, keriput, berseling dan berukuran 
+    besar dibandingkan bagian tanaman lainnya. Bentuknya oval 
+    dan ekstremitasnya bulat. Bunganya berwarna ungu atau merah 
+    dan berkumpul di corymbs.
+  </div>
+</div>
+
+<div id="overlayimg4" onclick="offf4()">
+  <div id="text1">
+    <center>Calendula</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Bunga/minyak bunga<br>
+    <center>Manfaat:</center><br>
+    Mempercepat penyembuhan luka, Mencegah infeksi, 
+    dan sakit tenggorokan<br>
+    <center>Efek Samping:</center><br>
+    Memicu alergi pada orang yang sensitif terhadap 
+    tanaman famili Asteraceae, (Menyebabkan kantuk jika 
+    dikonsumsi dalam jumlah banyak)<br>
+    <center>Deskripsi:</center><br>
+    Calendula adalah tanaman yang tumbuh di daerah mediterania 
+    dan memiliki bunga berwarna kuning-oranye. Bunga Calendula 
+    tersebut telah lama dimanfaatkan sebagai obat herbal untuk 
+    mengatasi berbagai penyakit.
+  </div>
+</div>
+
+<div id="overlayimg5" onclick="offf5()">
+  <div id="text1">
+    <center>Dandelion</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun, Bunga, Akar<br>
+    <center>Manfaat:</center><br>
+    Kehilangan nafsu makan, Sakit perut, Perut kembung 
+    akibat gas, Batu empedu, Nyeri sendi, Nyeri otot, Memar, 
+    Melancarkan pencernaan<br>
+    <center>Efek Samping:</center><br>
+    Mual,muntah, Anoreksia, Batu empedu, Kandung empedu 
+    meradang, Reaksi hipersensitivitas (alergi).<br>
+    <center>Deskripsi:</center><br>
+    Dandelion adalah tanaman yang tingginya bisa mencapai 
+    40 cm. Daunnya berwarna hijau dengan panjang antara 5-25 
+    cm. Tepi daun bergerigi tajam.Bunga dandelion bertangkai 
+    kecil, berwarna kuning atau oranye.
+  </div>
+</div>
+
+<div id="overlayimg6" onclick="offf6()">
+  <div id="text1">
+    <center>Gardenia</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Bunga<br>
+    <center>Manfaat:</center><br>
+    Mengatasi diabetes mellitus, Melancarkan pencernaan, 
+    Mengobati sariawan, Meredakan demam, Mempercepat 
+    penyembuhan luka<br>
+    <center>Efek Samping:</center><br>
+    Diare dan alergi tertentu<br>
+    <center>Deskripsi:</center><br>
+    Putih cerah dan beraroma manis, itulah kesan yang melekat 
+    pada bunga cantik yang satu ini. Tanaman kacapiring 
+    memiliki beberapa arti seperti kemurnian, cinta, dan 
+    kebaikan, membuatnya menjadi pilihan yang tepat sebagai 
+    rangkaian bunga acara pernikahan. Kaca piring atau gardenia 
+    masih bagian dari keluarga tanaman kopi, aslinya berasal 
+    dari wilayah tropis seperti Afrika, Asia, Kepulauan Pasifik 
+    Australia, dan Hawaii.
+  </div>
+</div>
+
+<div id="overlayimg7" onclick="offf7()">
+  <div id="text1">
+    <center>Chicory</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Akar, Bunga<br>
+    <center>Manfaat:</center><br>
+    Banyak digunakan untuk pengobatan penyakit hati, 
+    kantung empedu, dan jantung. Selain itu, chicory juga 
+    digunakan untuk mengatasi berbagai masalah pencernaan 
+    seperti sakit perut, sembelit, dan perut kembung.<br>
+    <center>Efek Samping:</center><br>
+    Iritasi kulit, Alergi<br>
+    <center>Deskripsi:</center><br>
+    Merupakan tumbuhan perdu yang berbulu kasar atau 
+    licin dengan akar tunggang yang kokoh. Tumbuhan perdu 
+    ini secara khas mengandung getah yang pahit dan seperti 
+    susu. Tinggi tumbuhan ini berkisar antara 1 m hingga 1,5 
+    m dengan batang berukuran 15-105 cm. Batang berbunga 
+    berbentuk bulat, tegak, berlubang, hampir tidak berdaun 
+    dan menghasilkan cabang yang kaku dan menyebar.
+  </div>
+</div>
+
+<div id="overlayimg8" onclick="offf8()">
+  <div id="text1">
+    <center>Chive Blossoms</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun<br>
+    <center>Manfaat:</center><br>
+    Penggunaan chives secara terbatas berfungsi sebagai 
+    stimulan, antiseptik, dan senyawa diuretik. Chives 
+    mengandung senyawa organosulfur seperti allil-sulfida, 
+    dan alkil-sulfoksida yang baik untuk sistem sirkulasi 
+    darah. Chives mengandung vitamin A dan vitamin C yang 
+    tinggi, juga mengandung sulfur, dan kaya akan kalsium dan 
+    zat besi.<br>
+    <center>Efek Samping:</center><br>
+    Menyebabkan keracunan, alergi dan hipoglikemia jika 
+    dikonsumsi terlalu banyak.<br>
+    <center>Deskripsi:</center><br>
+    Chives merupakan tanaman terna yang berumbi. 
+    Bentuk chives menyerupai bawang namun pada bagian 
+    tangkai yang paling ujung lebih panjang dan berwarna 
+    putih. Chives merupakan tanaman menahun dan dapat dengan 
+    mudah digali dan dipisahkan dari rumpunnya jika terlalu 
+    besar.
+  </div>
+</div>
+
+<div id="overlayimg9" onclick="offf9()">
+  <div id="text1">
+    <center>Coltsfoot</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun dan bunga<br>
+    <center>Manfaat:</center><br>
+    Penggunaan coltsfoot sebagai orbat herbal untuk mengobati 
+    Asma,  Sakit tenggorokan, Batuk, Bronkitis, Laringitis<br>
+    <center>Efek Samping:</center><br>
+    Beberapa zat tidak baik untuk tubuh jika 
+    dikonsumsi terlalu banyak<br>
+    <center>Deskripsi:</center><br>
+    Coltsfoot memiliki nama latin Tussilago farfara. Dilihat 
+    dari karakteristiknya, Coltsfoot mempunyai bunga berwarna 
+    emas mirip seperti dandelion, sementara daunnya lebar dan 
+    berbentuk seperti kuku.
+  </div>
+</div>
+
+<div id="overlayimg10" onclick="offf10()">
+  <div id="text1">
+    <center>Common mallow</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun , bunga dan biji<br>
+    <center>Manfaat:</center><br>
+    Sebagai antimikroba, antiinflamasi, antinyeri, mempercepat 
+    penyembuhan luka, mengatasi sembelit dan penyakit lambung<br>
+    <center>Efek Samping:</center><br>
+    Sebaiknya dihindarir bagi penderita batu empedu karena 
+    tinggi akan nitrat<br>
+    <center>Deskripsi:</center><br>
+    Daun Mallow berbentuk ginjal atau lobus palem yang sangat 
+    berkerut, lebar sekitar 3-5 cm, biasanya dengan tepi 
+    bergerigi. Daun mallow sering menunjukkan bercak ungu 
+    di tengah pangkal daun. Daun mallow memiliki tangkai daun 
+    yang panjang. Mallow dapat berbiji. Polong mallow berbiji 
+    bulat, yang dikenal sebagai 'keju', muncul segera setelah 
+    berbunga. Umumnya dimakan oleh anak-anak Eropa dalam 
+    perjalanan ke dan dari sekolah. Polong menempel pada 
+    batang, dekat dengan batang berbunga.
+  </div>
+</div>
+
+<div id="overlayimg11" onclick="offf11()">
+  <div id="text1">
+    <center>Common Milkweed</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun , bunga dan biji<br>
+    <center>Manfaat:</center><br>
+    Sebagai antimikroba, antiinflamasi, antinyeri, mempercepat 
+    penyembuhan luka, mengatasi sembelit dan penyakit lambung<br>
+    <center>Efek Samping:</center><br>
+    Sebaiknya dihindarir bagi penderita batu empedu karena 
+    tinggi akan nitrat<br>
+    <center>Deskripsi:</center><br>
+    Milkweed , (genus Asclepias ), genus dari sekitar 140 spesies 
+    tanaman berbunga abadi herba milik keluarga dogbane Apocynaceae 
+    (sebelumnya di Asclepiadaceae ). Milkweeds ditemukan di seluruh 
+    Amerika Utara dan Selatan, dan beberapa dibudidayakan sebagai 
+    tanaman hias. Banyakkupu-kupu milkweed , termasukkupu-kupu raja, 
+    hanya mengandalkan tanaman milkweed sebagai sumber makanan untuk 
+    larvanya. Tanaman ini mengandung cairan susu yang tajam yang mungkin 
+    membuat larva dan tahap selanjutnya tidak disukai predator.
+  </div>
+</div>
+
+<div id="overlayimg12" onclick="offf12()">
+  <div id="text1">
+    <center>Common Vetch</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun , bunga dan biji<br>
+    <center>Manfaat:</center><br>
+    Sebagai antimikroba, antiinflamasi, antinyeri, mempercepat 
+    penyembuhan luka, mengatasi sembelit dan penyakit lambung<br>
+    <center>Efek Samping:</center><br>
+    Sebaiknya dihindarir bagi penderita batu empedu karena 
+    tinggi akan nitrat<br>
+    <center>Deskripsi:</center><br>
+    tanaman dalam siklus tahunan milik keluarga Fabaceae, dari 
+    genus yang sama dengan kacang atau kacang. Vivia sativa adalah 
+    tanaman asli, secara spontan di Prancis, di pinggiran tanaman, 
+    di jalan, di bagian bawah pagar tanaman, di tepi hutan dan bahkan 
+    di tepi sungai. Penyebarannya meluas ke Asia dan Afrika Utara. 
+    Vetch umum ditanam sebagai makanan ternak, tetapi juga a pupuk 
+    hijau yang sangat baik. Ini juga merupakan tanaman yang menarik 
+    untuk pengembangbiakan lebah dan akhirnya dapat dikonsumsi oleh manusia.
+  </div>
+</div>
+
+<div id="overlayimg13" onclick="offf13()">
+  <div id="text1">
+    <center>Common Yarrow</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun , bunga dan biji<br>
+    <center>Manfaat:</center><br>
+    menyembuhkan demam, infeksi luka, luka, pendarahan, 
+    hemoroid, varises, hingga penyakit usus. <br>
+    <center>Efek Samping:</center><br>
+    Sebaiknya dihindarir bagi penderita batu empedu karena 
+    tinggi akan nitrat<br>
+    <center>Deskripsi:</center><br>
+    Memiliki nama ilmiah Achillea Millefolium, bunga kecil dengan warna putih 
+    ini masuk di dalam keluarga Herbaceous. Bunga yang sebenarnya cukup liar ini, 
+    bisa kamu kembang biakan di dalam lahan bunga atau tanaman obat di rumah. 
+    Selain memberi efek aestetika, fungsinya pun banyak dikaitkan untuk kesehatan.
+  </div>
+</div>
+
+<div id="overlayimg14" onclick="offf14()">
+  <div id="text1">
+    <center>Cone flower</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun dan bunga<br>
+    <center>Manfaat:</center><br>
+    Membantu mencegah kanker, penguat sistem imun dan 
+    pereda nyeri<br>
+    <center>Efek Samping:</center><br>
+    Efek yang mungkin dirasakan oleh beberapa adalah demam, 
+    mual, diare, sakit perut, pusing, sakit kepala, hingga 
+    ruam dan gatal-gatal pada kulit.<br>
+    <center>Deskripsi:</center><br>
+    Echinacea adalah bunga yang juga dikenal sebagai sebutan 
+    coneflower di Amerika. Ramuan bunga ini biasanya tersedia 
+    di toko obat, apotek, atau di pasar swalayan dengan bentuk 
+    pil, ramuan herbal kering, atau bahkan teh.  Bunga ini 
+    memiliki campuran zat aktif yang kompleks, beberapa di 
+    antaranya disebut antimikroba. Sementara kandungan lainnya 
+    diyakini memiliki efek pada sistem kekebalan tubuh manusia.
+  </div>
+</div>
+
+<div id="overlayimg15" onclick="offf15()">
+  <div id="text1">
+    <center>Cow Prsley</center><br>
+    <center>Bagian yang dapat dikonsumsi:</center><br>
+    Daun, bunga<br>
+    <center>Manfaat:</center><br>
+    Mengatasi gangguan pencernaan, peradangan, menjaga imun 
+    tubuh dan kesehatan mata, antibakteri/ jamur<br>
+    <center>Efek Samping:</center><br>
+    Jika terlalu banyak mengonsumsi parsley dapat menimbulkan 
+    efek samping seperti peningkatan buang air kecil dan sakit 
+    perut. Makan parsley yang berlebihan pada ibu hamil juga 
+    harus dihindari karena secara alami berpengaruh pada kadar 
+    hormon dan siklus haid. Parsley juga tidak baik bagi 
+    penderita batu ginjal atau asam urat karena adanya 
+    kandungan oksalat di dalamnya.<br>
+    <center>Deskripsi:</center><br>
+    Parsley adalah tanaman herba dengan tinggi rata-rata 10 
+    sampai dengan 30 cm yang terkenal sebagai herba untuk 
+    garnish (penghias menu makanan) atau sebagai bumbu masak. 
+    Di Indonesia tanaman ini dikenal juga sebagai daun 
+    peterseli. Parsley atau peterseli merupakan keluarga dekat 
+    jenis wortel maupun seledri. Daunnya berwarna hijau dan 
+    juga berbau segar.
+  </div>
+</div>
+
+<!-- content -->
+<div class="parallax">
+  <div id="abc">
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#result">Description</a></li>
+        <li><a href="#meettheteam">Meet The Team</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="topleft">
+    <h1>WILD EDIBLE <br> PLANTS DETECTOR</h1>
+    <p>Detection Platform for 15 Types Of <br> Wild Plants That Is Safe To Consume</p>
+    <a href="#Scan"><button class="btn"><span> Start Scanning</span></button></a>
+  </div>
+</div>
+
+<div class="section1">
+  <div id="myDIV">
+    <div class="about">
+      <header>
+        <h2 class="about">ABOUT</h2>  
+        <p>A system that can detect "Wild Edible Plants" or plants that are safe for consumption.
+          The purpose of making this platform so that everyone could consume safe wild plants around them and broaden people's knowledge 
+          about the plants part that are safe to consume, benefit, side effects, and the general description. </p>
+      </header>
+    </div>
+    </div>
+    <div id="kanan">
+    <div class="auto-slideshow">
+      <img class="mySlides" src="https://w0.peakpx.com/wallpaper/97/739/HD-wallpaper-allium-purple-flowers-field-flowers.jpg" >
+      <img class="mySlides" src="https://img.wallpapersafari.com/desktop/1920/1080/14/5/7CDGT5.jpg" >
+      <img class="mySlides" src="https://c0.wallpaperflare.com/preview/819/58/342/white-burdock-forest-nature.jpg">
+      <img class="mySlides" src="https://w0.peakpx.com/wallpaper/383/474/HD-wallpaper-calendula-flower-calendula-orange-close-up-garden-flower-yellow-beautiful.jpg">
+      <img class="mySlides" src="https://free4kwallpapers.com/uploads/originals/2016/07/01/dandelion-flowers-4k-wallpaper.jpg" >
+      <img class="mySlides" src="https://wallpaperaccess.com/full/8088726.jpg" >
+      <img class="mySlides" src="https://p4.wallpaperbetter.com/wallpaper/846/396/892/chicory-wallpaper-preview.jpg">
+      <img class="mySlides" src="https://img3.goodfon.com/wallpaper/nbig/7/d2/cvety-rozovye-chives-flower.jpg" >
+      <img class="mySlides" src="https://img.freepik.com/free-photo/yellow-dandelions-grow-from-stones_105751-14463.jpg?w=2000">
+      <img class="mySlides" src="https://c4.wallpaperflare.com/wallpaper/988/874/407/flower-common-mallow-flickr-nekonomania-wallpaper-preview.jpg">
+      <img class="mySlides" src="https://t4.ftcdn.net/jpg/01/82/78/51/360_F_182785140_vBSE9FZz6QkEM9YtqeaA4Y9zup5Z292o.jpg" >
+      <img class="mySlides" src="https://c0.wallpaperflare.com/preview/261/864/874/field-meadow-flower-meadow-vetch.jpg" >
+      <img class="mySlides" src="https://www.annarosaskincare.com/wp-content/uploads/2019/12/Vallhumall_1024tw.jpg" >
+      <img class="mySlides" src="https://w0.peakpx.com/wallpaper/636/680/HD-wallpaper-pink-echinacea-macro-bokeh-pink-flowers-r-echinacea.jpg">
+      <img class="mySlides" src="https://c0.wallpaperflare.com/preview/756/780/12/landscape-bokeh-minimal-wallpaper.jpg">
+    </div>
+    </div>
+  </div>
+
+<div class="section2">
+  <div class="scan-section">
+    <h3 id="Scan">Click the button below</h3>
+      {% load crispy_forms_tags %}
+      {% if flower %}
+      <a href="/flower{{flower}}"><center><img src="/flower{{flower}}" class="imageClipLayar text-center img-fluid mh-50 mw-50" /></center></a>
+       
+      <p style="color:white;">Unggah lagi?<br/><a href="/flower/">klik disini</a></p>
+  {% else %}
+  <p style="margin:0 auto; color:white;">Untuk prediksi edible plant, silakan unggah plant yang diinginkan, lalu tunggu sistem bekerja.</p>
+  <center><form style="margin-left:0 auto;margin-right:0 auto;" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ bunga }}
+    <br/><button class="uk-button uk-button-primary uk-margin-top" type="submit">UNGGAH</button>
+  </form></center>
+  <a href="#result"><button class="btn1"><span> See Result Description</span></button></a>
+{% endif %}
+    </div>
+  </div>
+
+
+
+<div class="section3">
+  <div class="result">
+    <h3 id="result">What's your result ?</h3>
+    <h3>Click on your label result from scan section</h3>
+    <div class="grid-container">
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Allium</h4>
+          <button onclick="onn1()"><img src="https://h2.commercev3.net/cdn.springhillnursery.com/images/800/70583.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Borage</h4>
+          <button onclick="onn2()"><img src="https://cdn.shopify.com/s/files/1/1317/8359/products/borage_3_cropped_shutterstock_356593193_copy_1024x1024.jpeg?v=1464932307" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Burdock</h4>
+          <button onclick="onn3()"><img src="https://id-test-11.slatic.net/p/16105a994094c8049b437ace6fbbc71e.jpg" alt="Nature"></button>
+        </div>
+      </div>  
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Calendula</h4>
+          <button onclick="onn4()"><img src="https://www.herbacin.com/wp-content/uploads/2020/11/Glossarbild10-scaled.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Dandelion</h4>
+          <button onclick="onn5()"><img src="https://d2ihahetunbosc.cloudfront.net/blog/wp-content/uploads/2022/02/daniel_klee__208047323_193748532663007_5132923582035019822_n-570x468.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Gardenia</h4>
+          <button onclick="onn6()"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Gardeniaflower.jpg/1200px-Gardeniaflower.jpg" alt="Nature"></button>
+        </div>
+      </div>  
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Chicory</h4>
+          <button onclick="onn7()"><img src="https://www.edenbrothers.com/store/media/Seeds-Flowers/SFMIS119-1.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Chive Blossoms</h4>
+          <button onclick="onn8()"><img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/chive-flowers-angie-c.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Coltsfoot</h4>
+          <button onclick="onn9()"><img src="https://www.ediblewildfood.com/images/coltsfoot-pictures/coldsfoot.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Common Mallow</h4>
+          <button onclick="onn10()"><img src="https://s3.amazonaws.com/media.jungledragon.com/images/3232/71202_small.jpg?AWSAccessKeyId=05GMT0V3GWVNE7GGM1R2&Expires=1656547210&Signature=OZMhgfqyQvSPws%2FzxchyVlXz%2BYg%3D" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Common Milkweed</h4>
+          <button onclick="onn11()"><img src="https://roundstoneseed.com/1739/common-milkweed.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Common Vetch</h4>
+          <button onclick="onn12()"><img src="https://d78hi7kj7xvs3.cloudfront.net/image/data/products/Vicia-sativa.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Common Yarrow</h4>
+          <button onclick="onn13()"><img src="https://seedempire.com/images/detailed/2/Yarrow_White_Seeds_Achillea_Millefolium.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Cone Flower</h4>
+          <button onclick="onn14()"><img src="https://www.calloways.com/wp-content/uploads/coneflower-purple-0773401943.jpg" alt="Nature"></button>
+        </div>
+      </div>
+      <div class="grid-item">
+        <div class="img-container">
+          <h4>Cow Parsley</h4>
+          <button onclick="onn15()"><img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Cow_parsley_%28Anthriscus_sylvestris%29_-_flowers_and_seeds_%28geograph_5393895%29.jpg" alt="Nature"></button>
+        </div>
+      </div>
+    </div>
+</div>
+
+  <div class="parallax2">
+    <div class="team-header"> 
+      <h2 id="meettheteam">Meet The Team</h2>
+    </div>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <img src="/static/Yusril.jpg" alt="Yusril Nurhikam" style="width:100%">
+          <div class="container">
+            <h2>Yusril Nurhikam</h2>
+            <p class="title">Backend Web Developer</p>
+            <button class="button" onclick="on()">Contact</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="column">
+        <div class="card">
+          <img src="/static/Gilang.jpg" alt="Gilang Ramadhan" style="width:100%">
+          <div class="container">
+            <h2>Gilang Ramadhan</h2>
+            <p class="title">Computer Vision Developer</p>
+            <p><button class="button" onclick="on1()">Contact</button></p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="column">
+        <div class="card">
+          <img src= "/static/Dinda.jpg" alt="Dinda Salsabiila" style="width:100%">
+          <div class="container">
+            <h2>Dinda Salsabiila S.P.A.</h2>
+            <p class="title">Frontend Web Developer</p>
+            <p><button class="button"  onclick="on2()">Contact</button></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <img src="/static/Razzan.jpg" alt="Razzan Mustofa" style="width:100%">
+          <div class="container">
+            <h2>Ahmad Razzan F.</h2>
+            <p class="title">Web deployment</p>
+            <p><button class="button"  onclick="on3()">Contact</button></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <img src="/static/Daffa.jpg" alt="Daffa Aji Pangestu" style="width:100%">
+          <div class="container">
+            <h2>Daffa Aji Pangestu</h2>
+            <p class="title">Data Preparation</p>
+            <p><button class="button" onclick="on4()">Contact</button></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button onclick="topFunction()" id="myBtn" title="Go to top">TOP</button>
+
+<script>
+// automatic slideshow
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+
+// contact details function
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+function on1() {
+  document.getElementById("overlay1").style.display = "block";
+}
+function on2() {
+  document.getElementById("overlay2").style.display = "block";
+}
+function on3() {
+  document.getElementById("overlay3").style.display = "block";
+}
+function on4() {
+  document.getElementById("overlay4").style.display = "block";
+}
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+function off1() {
+  document.getElementById("overlay1").style.display = "none";
+}
+function off2() {
+  document.getElementById("overlay2").style.display = "none";
+}
+function off3() {
+  document.getElementById("overlay3").style.display = "none";
+}
+function off4() {
+  document.getElementById("overlay4").style.display = "none";
+}
+
+// result image function
+function onn1() {
+  document.getElementById("overlayimg1").style.display = "block";
+}
+function offf1() {
+  document.getElementById("overlayimg1").style.display = "none";
+}
+
+function onn2() {
+  document.getElementById("overlayimg2").style.display = "block";
+}
+function offf2() {
+  document.getElementById("overlayimg2").style.display = "none";
+}
+
+function onn3() {
+  document.getElementById("overlayimg3").style.display = "block";
+}
+function offf3() {
+  document.getElementById("overlayimg3").style.display = "none";
+}
+
+function onn4() {
+  document.getElementById("overlayimg4").style.display = "block";
+}
+function offf4() {
+  document.getElementById("overlayimg4").style.display = "none";
+}
+
+function onn5() {
+  document.getElementById("overlayimg5").style.display = "block";
+}
+function offf5() {
+  document.getElementById("overlayimg5").style.display = "none";
+}
+
+function onn6() {
+  document.getElementById("overlayimg6").style.display = "block";
+}
+function offf6() {
+  document.getElementById("overlayimg6").style.display = "none";
+}
+
+function onn7() {
+  document.getElementById("overlayimg7").style.display = "block";
+}
+function offf7() {
+  document.getElementById("overlayimg7").style.display = "none";
+}
+
+function onn8() {
+  document.getElementById("overlayimg8").style.display = "block";
+}
+function offf8() {
+  document.getElementById("overlayimg8").style.display = "none";
+}
+
+function onn9() {
+  document.getElementById("overlayimg9").style.display = "block";
+}
+function offf9() {
+  document.getElementById("overlayimg9").style.display = "none";
+}
+
+function onn10() {
+  document.getElementById("overlayimg10").style.display = "block";
+}
+function offf10() {
+  document.getElementById("overlayimg10").style.display = "none";
+}
+
+function onn11() {
+  document.getElementById("overlayimg11").style.display = "block";
+}
+function offf11() {
+  document.getElementById("overlayimg11").style.display = "none";
+}
+
+function onn12() {
+  document.getElementById("overlayimg12").style.display = "block";
+}
+function offf12() {
+  document.getElementById("overlayimg12").style.display = "none";
+}
+
+function onn13() {
+  document.getElementById("overlayimg13").style.display = "block";
+}
+function offf13() {
+  document.getElementById("overlayimg13").style.display = "none";
+}
+
+function onn14() {
+  document.getElementById("overlayimg14").style.display = "block";
+}
+function offf14() {
+  document.getElementById("overlayimg14").style.display = "none";
+}
+
+function onn15() {
+  document.getElementById("overlayimg15").style.display = "block";
+}
+function offf15() {
+  document.getElementById("overlayimg15").style.display = "none";
+}
+
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+django
+django-crispy-forms
+mysqlclient
+torch
+pillow
+numpy

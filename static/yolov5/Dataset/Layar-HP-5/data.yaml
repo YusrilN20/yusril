@@ -1,0 +1,8 @@
+names:
+- Bergaris
+- Layar Retak
+- Normal
+- Rusak Parah
+nc: 4
+train: Dataset/Layar-HP-5/train/images
+val: Dataset/Layar-HP-5/valid/images
