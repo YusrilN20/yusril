@@ -122,9 +122,9 @@ nav ul li a{
   width:65%;
   padding: 10px;
   grid-auto-columns: 50%;
-background-color:#D5CAB6;
-float:left;
-
+  background-color:#D5CAB6;
+  float:left;
+  padding-left: 20vw;
 }
 
 #kanan {
@@ -140,32 +140,27 @@ float:left;
   text-align: center;
   padding: 20px 0;
 }
-.about { grid-area: 1 / 1 / 2 / 2; 
-
-}
+.about { grid-area: 1 / 1 / 2 / 2;}
 .auto-slideshow{ grid-area: 1 / 2 / 3 / 3;}
 
 .section1 {
   background: url(/static/bg.jpeg);
-  background-repeat: no-repeat;
-  background-size:cover;
+  background-size: auto;
+  background-position: center;
   margin-bottom: 0px;
-  height: 30vw;
+  height: 20vw;
   width: fit-content;
 }
 .about h2{
   font-family: Garamond, serif;
   font-stretch: ultra-expanded;
-  text-align: center;
   color: #212f1d;
   font-size: x-large;
   font-weight: 700;
-  right: 0;
 }
 .about p{
-    text-align: center;
-    color: #white;
-    font-weight: 525;
+  color: white;
+  font-weight: 525;
 }
 
 /* slideshow */
@@ -1133,7 +1128,7 @@ html {
   <div id="myDIV">
     <div class="about">
       <header>
-        <h2 class="about">ABOUT</h2>  
+        <h2 id="about">ABOUT</h2>  
         <p>A system that can detect "Wild Edible Plants" or plants that are safe for consumption.
           The purpose of making this platform so that everyone could consume safe wild plants around them and broaden people's knowledge 
           about the plants part that are safe to consume, benefit, side effects, and the general description. </p>
@@ -1161,6 +1156,9 @@ html {
     </div>
   </div>
 
+  <div class="parallax1">
+  </div>
+
 <div class="section2">
   <div class="scan-section">
     <h3 id="Scan">Click the button below</h3>
@@ -1181,7 +1179,8 @@ html {
     </div>
   </div>
 
-
+  <div class="parallax1">
+  </div>
 
 <div class="section3">
   <div class="result">
